@@ -1,0 +1,65 @@
+{% extends "booking/base.html" %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h3>Pay for Booking #{{ booking.id }}</h3>
+      <p>Package: {{ booking.package.title }}</p>
+      <p>Amount: ₹{{ booking.total_amount }}</p>
+
+      <button id="rzp-button" class="btn btn-primary">Pay Now</button>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    const options = {
+      "key": "{{ razorpay_key_id }}", // Enter the Key ID generated from the Dashboard
+      "amount": "{{ amount_paise }}", // Amount in paise
+      "currency": "{{ currency }}",
+      "name": "TripTrek",
+      "description": "Booking #{{ booking.id }}",
+      "order_id": "{{ razorpay_order_id }}", //This is a sample Order ID. Pass the `id` obtained in the previous step
+      "handler": function (response){
+          // response.razorpay_payment_id
+          // response.razorpay_order_id
+          // response.razorpay_signature
+          // Send data to server to verify
+          const formData = new FormData();
+          formData.append('razorpay_payment_id', response.razorpay_payment_id);
+          formData.append('razorpay_order_id', response.razorpay_order_id);
+          formData.append('razorpay_signature', response.razorpay_signature);
+
+          fetch("{% url 'verify_payment' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+              // No CSRF header because view is csrf_exempt. If not using csrf_exempt, set the X-CSRFToken header.
+            }
+          }).then(res => res.json()).then(data => {
+            if(data.status === 'success'){
+              alert('Payment successful!');
+              // Redirect to booking detail or ticket page
+              window.location.href = "/booking/" + data.booking_id + "/ticket/";
+            } else {
+              alert('Payment verification failed: ' + data.message);
+            }
+          }).catch(err => {
+            console.error(err);
+            alert('Error verifying payment. Check console.');
+          });
+      },
+      "prefill": {
+          "name": "{{ request.user.get_full_name|default:request.user.username }}",
+          "email": "{{ request.user.email }}"
+      },
+      "theme": {
+          "color": "#3f51b5"
+      }
+    };
+    const rzp = new Razorpay(options);
+    document.getElementById('rzp-button').onclick = function(e){
+      rzp.open();
+      e.preventDefault();
+    }
+  </script>
+{% endblock %}

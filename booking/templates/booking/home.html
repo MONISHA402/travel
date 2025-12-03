@@ -1,0 +1,196 @@
+{% extends "booking/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero-section text-light d-flex align-items-center"
+         style="height:75vh; background:url('{% static 'css/images/bannertravel.jpeg' %}') center/cover no-repeat;">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold text-warning">Discover Your Next Adventure 🌍</h1>
+        <p class="lead text-white">Explore premium holiday packages curated just for you.</p>
+
+        <a href="{% url 'holiday_packages' %}" class="btn btn-primary btn-lg mt-3">
+            Explore Packages →
+        </a>
+    </div>
+</section>
+
+<!-- TOP DESTINATIONS -->
+<section class="container mt-5">
+    <h2 class="section-title">🏝 Top Destinations</h2>
+
+    <div class="row g-4 justify-content-center">
+        <!-- Ooty -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 destination-card">
+                <img src="{% static 'css/images/oory.webp' %}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Ooty</h5>
+                    <p class="card-text small text-dark">Nestled in the Nilgiri Hills, Ooty is perfect for a serene escape amidst tea plantations and scenic mountains.</p>
+                    <a href="{% url 'destination_detail' 'ooty' %}" class="btn btn-outline-primary btn-sm">Explore →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Bali -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 destination-card">
+                <img src="{% static 'css/images/bali.webp' %}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Bali</h5>
+                    <p class="card-text small text-dark">Tropical paradise with stunning beaches, vibrant culture, and exciting water sports.</p>
+                    <a href="{% url 'destination_detail' 'bali' %}" class="btn btn-outline-primary btn-sm">Explore →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Japan -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 destination-card">
+                <img src="{% static 'css/images/japan.webp' %}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Japan</h5>
+                    <p class="card-text small text-dark">Experience the perfect mix of tradition and technology in Japan, from temples to neon-lit streets.</p>
+                    <a href="{% url 'destination_detail' 'japan' %}" class="btn btn-outline-primary btn-sm">Explore →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Singapore -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 destination-card">
+                <img src="{% static 'css/images/singapore.webp' %}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Singapore</h5>
+                    <p class="card-text small text-dark">Modern cityscape, gardens, Marina Bay, and a melting pot of cultures await you.</p>
+                    <a href="{% url 'destination_detail' 'singapore' %}" class="btn btn-outline-primary btn-sm">Explore →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Dubai -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 destination-card">
+                <img src="{% static 'css/images/dubai.jpg' %}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Dubai</h5>
+                    <p class="card-text small text-dark">Luxury, adventure, and skyscrapers define Dubai – from desert safaris to shopping extravaganzas.</p>
+                    <a href="{% url 'destination_detail' 'dubai' %}" class="btn btn-outline-primary btn-sm">Explore →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Munnar -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 destination-card">
+                <img src="{% static 'css/images/munnar.jpg' %}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Munnar</h5>
+                    <p class="card-text small text-dark">Tea gardens, misty hills, and tranquil valleys make Munnar a rejuvenating retreat.</p>
+                    <a href="{% url 'destination_detail' 'munnar' %}" class="btn btn-outline-primary btn-sm">Explore →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Goa -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 destination-card">
+                <img src="{% static 'css/images/goa.jpeg' %}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Goa</h5>
+                    <p class="card-text small text-dark">Sun, sand, nightlife, and seafood – Goa offers everything for an ultimate beach vacation.</p>
+                    <a href="{% url 'destination_detail' 'goa' %}" class="btn btn-outline-primary btn-sm">Explore →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRENDING PACKAGES -->
+<section class="container mt-5">
+    <h2 class="section-title">🔥 Trending Packages</h2>
+
+    <div class="row g-4 justify-content-center">
+        <!-- Maldives -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 package-card">
+                <div class="position-relative">
+                    <img src="{% static 'css/images/malldivs.jpg' %}" class="card-img-top">
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-2 fs-6">₹1,20,000</span>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Maldives Escape</h5>
+                    <p class="card-text small">7 nights in Maldives with water villas and snorkeling experience.</p>
+                    <a href="{% url 'destination_detail' 'maldives' %}" class="btn btn-primary btn-sm">View Details →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Switzerland -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 package-card">
+                <div class="position-relative">
+                    <img src="{% static 'css/images/swiz.webp' %}" class="card-img-top">
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-2 fs-6">₹1,50,000</span>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Switzerland Adventure</h5>
+                    <p class="card-text small">Explore the Alps, skiing, and scenic Swiss villages for 5 nights.</p>
+                    <a href="#" class="btn btn-primary btn-sm">View Details →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Paris -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 package-card">
+                <div class="position-relative">
+                    <img src="{% static 'css/images/paris.webp' %}" class="card-img-top">
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-2 fs-6">₹1,10,000</span>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Paris Romantic</h5>
+                    <p class="card-text small">5 nights in Paris with Eiffel Tower visit and Seine cruise.</p>
+                    <a href="#" class="btn btn-primary btn-sm">View Details →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Thailand -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 package-card">
+                <div class="position-relative">
+                    <img src="{% static 'css/images/thai.jpg' %}" class="card-img-top">
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-2 fs-6">₹95,000</span>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Thailand Explorer</h5>
+                    <p class="card-text small">7 nights in Bangkok and Phuket with cultural and beach tours.</p>
+                    <a href="#" class="btn btn-primary btn-sm">View Details →</a>
+                </div>
+            </div>
+        </div>
+        <!-- New Zealand -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 package-card">
+                <div class="position-relative">
+                    <img src="{% static 'css/images/newz.jpg' %}" class="card-img-top">
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-2 fs-6">₹1,60,000</span>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">New Zealand Trip</h5>
+                    <p class="card-text small">Experience nature, adventure, and road trips across stunning landscapes.</p>
+                    <a href="#" class="btn btn-primary btn-sm">View Details →</a>
+                </div>
+            </div>
+        </div>
+        <!-- Egypt -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 package-card">
+                <div class="position-relative">
+                    <img src="{% static 'css/images/egypt.webp' %}" class="card-img-top">
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-2 fs-6">₹1,05,000</span>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary fw-bold">Egypt Explorer</h5>
+                    <p class="card-text small">Visit pyramids, Nile cruise, and ancient Egyptian heritage for 6 nights.</p>
+                    <a href="#" class="btn btn-primary btn-sm">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "booking/base.html" %}
+{% block content %}
+
+<h2>My Bookings</h2>
+
+<table class="table table-bordered mt-3">
+  <tr>
+    <th>ID</th>
+    <th>Package</th>
+    <th>Amount</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+
+  {% for b in bookings %}
+    <tr>
+      <td>{{ b.id }}</td>
+      <td>{{ b.package.title }}</td>
+      <td>₹{{ b.total_amount }}</td>
+      <td>{{ b.status }}</td>
+      <td>
+        <a href="{% url 'booking_ticket' b.id %}" class="btn btn-sm btn-primary">View Ticket</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

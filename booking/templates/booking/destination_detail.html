@@ -1,0 +1,23 @@
+{% extends "booking/base.html" %}
+{% block content %}
+
+<h2>{{ destination.name }} ({{ destination.country }})</h2>
+
+{% if destination.image %}
+  <img src="{{ destination.image.url }}" class="img-fluid rounded mb-3">
+{% endif %}
+
+<p>{{ destination.description }}</p>
+
+<h4 class="mt-4">Available Packages</h4>
+<ul>
+  {% for p in destination.packages.all %}
+    <li>
+      <a href="{% url 'package_detail' p.slug %}">{{ p.title }}</a>
+    </li>
+  {% empty %}
+    <p>No packages available.</p>
+  {% endfor %}
+</ul>
+
+{% endblock %}

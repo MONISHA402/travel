@@ -1,0 +1,35 @@
+{% extends "booking/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+
+  <h2 class="section-title mb-5 text-center">
+    🌴 Explore Holiday Packages
+  </h2>
+
+  <div class="row g-4">
+    {% for pkg in packages %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm border-0 package-card">
+        
+        {% if pkg.cover_image %}
+        <img src="{{ pkg.cover_image.url }}" class="card-img-top package-image" alt="{{ pkg.title }}">
+        {% endif %}
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-primary fw-bold">{{ pkg.title }}</h5>
+          <p class="card-text text-muted">{{ pkg.short_description }}</p>
+          <p class="card-text fw-bold mt-auto">Price: ₹{{ pkg.price }}</p>
+          <a href="{% url 'package_details' pkg.slug %}" class="btn btn-outline-primary mt-2 w-100">View Details →</a>
+        </div>
+
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center text-muted">No packages available at the moment.</p>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

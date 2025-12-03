@@ -1,0 +1,36 @@
+{% extends "booking/base.html" %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-8">
+      <h2>{{ package.title }}</h2>
+
+      {% if package.cover_image %}
+        <img src="{{ package.cover_image.url }}" class="img-fluid mb-3">
+      {% endif %}
+
+      <!-- SHOW GALLERY IMAGES -->
+      {% if package.images.all %}
+        <h4>More Images</h4>
+        <div class="row">
+          {% for img in package.images.all %}
+            <div class="col-md-4 mb-3">
+              <img src="{{ img.image.url }}" class="img-fluid rounded" style="height:180px;object-fit:cover;">
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <p>{{ package.description }}</p>
+      <p><strong>Price:</strong> ₹{{ package.price }} |
+         <strong>Duration:</strong> {{ package.duration_days }} days
+      </p>
+      <p><strong>Available Slots:</strong> {{ package.available_slots }}</p>
+
+      {% if user.is_authenticated %}
+        <a href="{% url 'book_package' package.id %}" class="btn btn-success">Book Now</a>
+      {% else %}
+        <a href="{% url 'login' %}?next={% url 'book_package' package.id %}" class="btn btn-primary">Login to Book</a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

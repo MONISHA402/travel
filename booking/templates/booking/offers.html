@@ -1,0 +1,33 @@
+{% extends "booking/base.html" %}
+{% block content %}
+<div class="container py-5">
+
+    <h2 class="section-title text-center mb-4">🔥 Latest Travel Offers</h2>
+
+    <div class="row g-4">
+        {% for offer in offers %}
+        <div class="col-md-4">
+            <div class="offer-card">
+
+                <div class="offer-badge">
+                    {{ offer.discount_percent }}% OFF
+                </div>
+
+                <div class="offer-body">
+                    <h5 class="offer-title">{{ offer.code }}</h5>
+                    <p class="offer-desc">{{ offer.description }}</p>
+
+                    <span class="offer-status {{ offer.active|yesno:'active,inactive' }}">
+                        {{ offer.active|yesno:"Active,Expired" }}
+                    </span>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-light">No offers available.</p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

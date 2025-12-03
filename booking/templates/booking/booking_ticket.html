@@ -1,0 +1,51 @@
+{% extends "booking/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Load CSS -->
+<link rel="stylesheet" href="{% static 'css/booking_ticket.css' %}">
+
+<div class="ticket">
+
+  <!-- Left panel -->
+  <div class="left">
+    <div class="company">TripTrek</div>
+    <h1>Boarding Pass</h1>
+
+    <div class="info">
+      <div><strong>Passenger:</strong> {{ booking.user.get_full_name|default:booking.user.username }}</div>
+      <div><strong>Package:</strong> {{ booking.package.title }}</div>
+      <div><strong>Travel Dates:</strong> {{ booking.package.start_date }} to {{ booking.package.end_date }}</div>
+      <div><strong>Travelers:</strong> {{ booking.travelers }}</div>
+      <div><strong>Booking ID:</strong> #{{ booking.id }}</div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div><strong>Amount Paid:</strong> ₹{{ booking.total_amount }}</div>
+        <div><strong>Booking Time:</strong> {{ booking.booking_time }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right panel -->
+  <div class="right" style="background-image: url('{% static 'css/images/bannertravel.jpeg' %}');">
+    <div class="small-text">TRIPT R K</div>
+    <div class="destination">{{ booking.package.destination.name }}</div>
+    <div class="small-text">{{ booking.package.destination.country }}</div>
+
+    {% if qr_uri %}
+      <img src="{{ qr_uri }}" alt="QR code" class="qr">
+    {% endif %}
+
+    <div class="footer-text">
+      Present this ticket at check-in. QR code will be validated.
+    </div>
+
+    <a href="{% url 'booking_list' %}" class="btn btn-light btn-back">Back to My Bookings</a>
+  </div>
+
+</div>
+
+{% endblock %}
