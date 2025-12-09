@@ -1,24 +1,91 @@
 {% extends "booking/base.html" %}
 {% block content %}
-<div class="container py-5 text-light">
+<div class="hotels-background">
+    <div class="container py-5 text-light">
 
-    <div class="coming-soon-box text-center">
+        <div class="coming-soon-box text-center">
 
-        <h2 class="coming-title mb-3">🏨 Hotels Coming Soon</h2>
+            <h2 class="coming-title mb-3">🏨 Hotels Coming Soon</h2>
 
-        <p class="coming-text mb-4">
-            We are preparing a huge hotel directory with  
-            <strong>500+ premium stays</strong>, the best deals, maps,  
-            luxury resorts, budget-friendly rooms, and much more.
-        </p>
+            <p class="coming-text mb-4">
+                We are preparing a huge hotel directory with  
+                <strong>500+ premium stays</strong>, the best deals, maps,  
+                luxury resorts, budget-friendly rooms, and much more.
+            </p>
 
-        <div class="loader mb-4"></div>
+            <div class="loader mb-4"></div>
 
-        <p class="coming-sub">
-            Stay tuned — launching soon on TripTrek!
-        </p>
+            <p class="coming-sub">
+                Stay tuned — launching soon on TripTrek!
+            </p>
+
+        </div>
 
     </div>
+</div>    
+<style>
+/* =========================
+  HOTELS
+========================= */
+/* Background container with opacity */
+  .hotels-background {
+    position: relative;
+    background: url('/media/packages/hotels1.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;  /* full viewport height */
+  }
+/* Overlay with opacity */
+  .hotels-background::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* top:0; left:0; right:0; bottom:0; */
+    background-color: rgba(0, 0, 0, 0.6); /* black overlay with 60% opacity */
+    z-index: 1;
+}
 
-</div>
+  /* Make sure container content is above overlay */
+  .hotels-background .container {
+    position: relative;
+    z-index: 2;
+}
+.coming-soon-box {
+   margin-top: 220px;
+    padding: 50px 30px;
+    border-radius: 12px;
+    
+}
+
+.coming-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffd700; /* golden/yellow color */
+}
+
+.coming-text {
+    font-size: 1.1rem;
+    color: #f0f0f0;
+}
+
+.coming-sub {
+    font-size: 1rem;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+/* Loader animation */
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #ffd700;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
 {% endblock %}

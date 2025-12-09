@@ -15,4 +15,49 @@
     </div>
 
 </div>
+<style>
+    /* =========================
+  HOTELS
+========================= */
+.coming-soon-box {
+    background: rgba(0, 0, 0, 0.71); /* semi-transparent dark background */
+    padding: 50px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.coming-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffd700; /* golden/yellow color */
+}
+
+.coming-text {
+    font-size: 1.1rem;
+    color: #f0f0f0;
+}
+
+.coming-sub {
+    font-size: 1rem;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+/* Loader animation */
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #ffd700;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+</style>
 {% endblock %}

@@ -21,7 +21,8 @@
           <h5 class="card-title text-primary fw-bold">{{ pkg.title }}</h5>
           <p class="card-text text-muted">{{ pkg.short_description }}</p>
           <p class="card-text fw-bold mt-auto">Price: ₹{{ pkg.price }}</p>
-          <a href="{% url 'package_details' pkg.slug %}" class="btn btn-outline-primary mt-2 w-100">View Details →</a>
+          <!-- Fixed URL name -->
+          <a href="{% url 'package_detail' pkg.slug %}" class="btn btn-outline-primary mt-2 w-100">View Details →</a>
         </div>
 
       </div>

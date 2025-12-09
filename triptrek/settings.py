@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-3h-o8^mff8z2m7c4)grni-%xvt&#(hlt&56=huxu_^hm#j-neh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['moni402.pythonanywhere.com',
+    'www.moni402.pythonanywhere.com',
+    '127.0.0.1',
+    'localhost']
 
 
 # Application definition
@@ -132,8 +135,17 @@ RAZORPAY_KEY_ID = "rzp_test_RTefht4QhoaEW2"
 RAZORPAY_KEY_SECRET = "QRShwhD5YbMLGwCNgn1D9qdl"
 
 # Email (for dev use console backend; change to SMTP for production)
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DEFAULT_FROM_EMAIL = "triptrek@example.com"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = "monisha402@gmail.com"
+EMAIL_HOST_PASSWORD = "dbgg auaa fapk igdn"  # Use Gmail App Password
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 # Auth redirects
 LOGIN_URL = "login"

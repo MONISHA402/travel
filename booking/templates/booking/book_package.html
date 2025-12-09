@@ -1,15 +1,18 @@
 {% extends "booking/base.html" %}
 {% block content %}
-  <h3>Book: {{ package.title }}</h3>
-  <form method="post">{% csrf_token %}
-    <div class="mb-3">
-      <label>Travelers</label>
-      <input type="number" name="travelers" class="form-control" min="1" max="{{ package.available_slots }}" value="1" required>
-    </div>
-    <div class="mb-3">
-      <label>Offer Code (optional)</label>
-      <input type="text" name="offer_code" class="form-control">
-    </div>
-    <button class="btn btn-primary" type="submit">Proceed to Payment</button>
-  </form>
+<h3>Book: {{ package.title }}</h3>
+
+<form method="post">{% csrf_token %}
+  <div class="mb-3">
+    <label>Travelers</label>
+    <input type="number" name="travelers" class="form-control" min="1" max="{{ package.available_slots }}" value="1" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Offer Code (optional)</label>
+    <input type="text" name="offer_code" class="form-control">
+  </div>
+
+  <button class="btn btn-primary" type="submit">Proceed to Payment</button>
+</form>
 {% endblock %}
